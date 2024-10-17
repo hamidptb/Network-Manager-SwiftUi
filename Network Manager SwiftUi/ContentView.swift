@@ -13,10 +13,18 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
+            
             Text("Hello, world!")
+            
+            Button("Login") {
+                performLogin(username: "emilys", password: "emilyspass", expiresInMins: 30)
+            }
         }
         .padding()
     }
+    
+    
+    
 }
 
 #Preview {
