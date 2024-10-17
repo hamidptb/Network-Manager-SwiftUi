@@ -22,5 +22,5 @@ protocol APIService {
 //    
 //    func pointTransactions() -> AnyPublisher<[Temp], APIError>
     
-    func login() -> AnyPublisher<[Temp], APIError>
+    func login(username: String, password: String, expiresInMins: Int) -> AnyPublisher<Login, APIError>
 }

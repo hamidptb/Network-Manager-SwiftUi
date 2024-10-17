@@ -12,11 +12,7 @@ struct APIErrorMapper {
     // MARK: - Types
 
     enum Context {
-        case categories
-        case sliders
-        case services
-        case customerStat
-        case pointTransactions
+        case login
     }
 
     // MARK: - Properties
@@ -39,16 +35,8 @@ struct APIErrorMapper {
              .failedRequest,
              .invalidResponse:
             switch context {
-            case .categories:
-                return "The list of categories could not be fetched."
-            case .sliders:
-                return "The list of sliders could not be fetched."
-            case .services:
-                return "The list of services could not be fetched."
-            case .customerStat:
-                return "The customer stat could not be fetched."
-            case .pointTransactions:
-                return "The list of point transactions could not be fetched."
+            case .login:
+                return "Can not be logged in."
             }
         }
     }

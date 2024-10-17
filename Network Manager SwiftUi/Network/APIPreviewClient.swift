@@ -11,24 +11,8 @@ import Foundation
 struct APIPreviewClient: APIService {
     // MARK: - Methods
     
-    func categories() -> AnyPublisher<[Temp], APIError> {
-        publisher(for: "categories")
-    }
-    
-    func sliders() -> AnyPublisher<[Temp], APIError> {
-        publisher(for: "sliders")
-    }
-
-    func services() -> AnyPublisher<[Temp], APIError> {
-        publisher(for: "services")
-    }
-    
-    func customerStat() -> AnyPublisher<Temp, APIError> {
-        publisher(for: "customerStat")
-    }
-    
-    func pointTransactions() -> AnyPublisher<[Temp], APIError> {
-        publisher(for: "pointTransactions")
+    func login(username: String, password: String, expiresInMins: Int) -> AnyPublisher<Login, APIError> {
+        publisher(for: "login")
     }
 }
 

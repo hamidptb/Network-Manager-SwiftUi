@@ -11,25 +11,9 @@ import Foundation
 class APIClient: APIService {
 
     // MARK: - API Service
-
-    func categories() -> AnyPublisher<[Temp], APIError> {
-        request(.categories)
-    }
     
-    func sliders() -> AnyPublisher<[Temp], APIError> {
-        request(.sliders)
-    }
-    
-    func services() -> AnyPublisher<[Temp], APIError> {
-        request(.services)
-    }
-    
-    func customerStat() -> AnyPublisher<Temp, APIError> {
-        request(.customerStat)
-    }
-    
-    func pointTransactions() -> AnyPublisher<[Temp], APIError> {
-        request(.pointTransactions)
+    func login(username: String, password: String, expiresInMins: Int) -> AnyPublisher<Login, APIError> {
+        request(.login(username: username, password: password, expiresInMins: expiresInMins))
     }
     
     // MARK: - Helper Methods

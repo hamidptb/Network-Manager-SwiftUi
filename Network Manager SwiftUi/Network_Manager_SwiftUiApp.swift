@@ -11,7 +11,7 @@ import SwiftUI
 struct Network_Manager_SwiftUiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(viewModel: HomeViewModel(apiService: APIClient()))
         }
     }
 }

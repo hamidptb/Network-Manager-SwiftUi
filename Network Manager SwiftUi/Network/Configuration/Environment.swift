@@ -10,7 +10,7 @@ import Foundation
 enum Environment {
 
     static var apiBaseURL: URL {
-        URL(string: "https://appservice-stage.avainfo.tech/api/v1")!
+        URL(string: "https://dummyjson.com")!
     }
-
+    
 }
