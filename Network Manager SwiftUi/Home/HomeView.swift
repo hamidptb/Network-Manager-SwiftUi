@@ -20,6 +20,10 @@ struct HomeView: View {
             Button("User Information") {
                 viewModel.userInfo()
             }
+            
+            Button("Carts") {
+                viewModel.carts()
+            }
         }
         .padding()
     }

@@ -14,6 +14,7 @@ enum APIEndpoint {
     case login(username: String, password: String, expiresInMins: Int)
     case userInfo
     case refreshToken
+    case carts
     
     // MARK: - Properties
 
@@ -39,6 +40,8 @@ enum APIEndpoint {
             return "/auth/me"
         case .refreshToken:
             return "/auth/refresh"
+        case .carts:
+            return "/carts"
         }
     }
 
@@ -46,7 +49,7 @@ enum APIEndpoint {
         switch self {
         case .login, .refreshToken:
             return .post
-        case .userInfo:
+        case .userInfo, .carts:
             return .get
         }
     }
@@ -56,7 +59,7 @@ enum APIEndpoint {
         case .login(let username, let password, let expiresInMins):
             let requestBody = LoginRequestBody(username: username, password: password, expiresInMins: expiresInMins)
             return try? JSONEncoder().encode(requestBody)
-        case .userInfo:
+        case .userInfo, .carts:
             return nil
         case .refreshToken:
             let requestBody = RefreshTokenRequestBody(refreshToken: AuthTokenManager.shared.getRefreshToken() ?? "-")
@@ -66,7 +69,7 @@ enum APIEndpoint {
     
     private var headers: Headers {
         switch self {
-        case .login, .refreshToken:
+        case .login, .refreshToken, .carts:
             return ["Content-Type": "application/json"]
         case .userInfo:
             return ["Authorization": "Bearer " + (AuthTokenManager.shared.getAccessToken() ?? "-")]

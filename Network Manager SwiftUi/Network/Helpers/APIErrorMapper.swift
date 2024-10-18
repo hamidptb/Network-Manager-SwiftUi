@@ -14,6 +14,7 @@ struct APIErrorMapper {
     enum Context {
         case login
         case userInfo
+        case carts
     }
 
     // MARK: - Properties
@@ -40,6 +41,8 @@ struct APIErrorMapper {
                 return "Can not be logged in."
             case .userInfo:
                 return "Can not get user information."
+            case .carts:
+                return "Can not get carts."
             }
         }
     }

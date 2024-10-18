@@ -12,19 +12,9 @@ protocol APIService {
 
     // MARK: - Properties
     
-//    func categories() -> AnyPublisher<[Temp], APIError>
-//    
-//    func sliders() -> AnyPublisher<[Temp], APIError>
-//    
-//    func services() -> AnyPublisher<[Temp], APIError>
-//    
-//    func customerStat() -> AnyPublisher<Temp, APIError>
-//    
-//    func pointTransactions() -> AnyPublisher<[Temp], APIError>
-    
     func login(username: String, password: String, expiresInMins: Int) -> AnyPublisher<User, APIError>
     
     func userInfo() -> AnyPublisher<User, APIError>
     
-    
+    func carts() -> AnyPublisher<CartResponse, APIError>
 }

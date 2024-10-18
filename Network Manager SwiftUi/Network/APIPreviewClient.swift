@@ -19,6 +19,10 @@ struct APIPreviewClient: APIService {
     func userInfo() -> AnyPublisher<User, APIError> {
         publisher(for: "userInfo")
     }
+    
+    func carts() -> AnyPublisher<CartResponse, APIError> {
+        publisher(for: "carts")
+    }
 }
 
 fileprivate extension APIPreviewClient {

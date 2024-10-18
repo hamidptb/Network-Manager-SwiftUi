@@ -20,6 +20,10 @@ class APIClient: APIService {
         request(.userInfo)
     }
     
+    func carts() -> AnyPublisher<CartResponse, APIError> {
+        request(.carts)
+    }
+    
     // MARK: - Helper Methods
     
     private func request<T: Decodable>(_ endpoint: APIEndpoint) -> AnyPublisher<T, APIError> {

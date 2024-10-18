@@ -78,4 +78,27 @@ class HomeViewModel: ObservableObject {
             }).store(in: &cancellables)
     }
     
+    func carts() {
+        isFetching = true
+        
+        apiService.carts()
+            .sink(receiveCompletion: { [weak self] completion in
+                self?.isFetching = false
+                
+                switch completion {
+                case .finished:
+                    print("Successfully carts")
+                case .failure(let error):
+                    print("Unable to carts \(error)")
+
+                    self?.errorMessage = APIErrorMapper(
+                        error: error,
+                        context: .carts
+                    ).message
+                }
+            }, receiveValue: { value in
+                //
+            }).store(in: &cancellables)
+    }
+    
 }
