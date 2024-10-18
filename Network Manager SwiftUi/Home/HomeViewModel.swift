@@ -22,11 +22,7 @@ class HomeViewModel: ObservableObject {
 
     // MARK: -
 
-    private var subscriptions: Set<AnyCancellable> = []
-
-    // MARK: -
-    
-    let dispatchGroup = DispatchGroup()
+    private var cancellables: Set<AnyCancellable> = []
     
     // MARK: - Initialization
 
@@ -54,8 +50,32 @@ class HomeViewModel: ObservableObject {
                         context: .login
                     ).message
                 }
-            }, receiveValue: { [weak self] categories in
-//                self?.categories = categories
-            }).store(in: &subscriptions)
+            }, receiveValue: { value in
+                AuthTokenManager.shared.setAuthTokens(access: value.accessToken, refresh: value.refreshToken)
+            }).store(in: &cancellables)
     }
+    
+    func userInfo() {
+        isFetching = true
+        
+        apiService.userInfo()
+            .sink(receiveCompletion: { [weak self] completion in
+                self?.isFetching = false
+                
+                switch completion {
+                case .finished:
+                    print("Successfully userInfo")
+                case .failure(let error):
+                    print("Unable to userInfo \(error)")
+
+                    self?.errorMessage = APIErrorMapper(
+                        error: error,
+                        context: .userInfo
+                    ).message
+                }
+            }, receiveValue: { value in
+                //
+            }).store(in: &cancellables)
+    }
+    
 }

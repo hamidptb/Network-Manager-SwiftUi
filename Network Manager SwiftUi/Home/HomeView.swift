@@ -16,6 +16,10 @@ struct HomeView: View {
             Button("Login") {
                 viewModel.login(username: "emilys", password: "emilyspass", expiresInMins: 30)
             }
+            
+            Button("User Information") {
+                viewModel.userInfo()
+            }
         }
         .padding()
     }

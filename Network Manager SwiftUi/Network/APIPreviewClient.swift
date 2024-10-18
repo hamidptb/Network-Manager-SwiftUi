@@ -9,10 +9,15 @@ import Combine
 import Foundation
 
 struct APIPreviewClient: APIService {
+    
     // MARK: - Methods
     
-    func login(username: String, password: String, expiresInMins: Int) -> AnyPublisher<Login, APIError> {
+    func login(username: String, password: String, expiresInMins: Int) -> AnyPublisher<User, APIError> {
         publisher(for: "login")
+    }
+    
+    func userInfo() -> AnyPublisher<User, APIError> {
+        publisher(for: "userInfo")
     }
 }
 

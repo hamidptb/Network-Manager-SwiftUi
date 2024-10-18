@@ -1,11 +1,11 @@
 //
-//  Login.swift
+//  User.swift
 //  Network Manager SwiftUi
 //
 //  Created by Hamid on 10/17/24.
 //
 
-struct Login: Codable {
+struct User: Codable {
     let id: Int
     let username: String
     let email: String
@@ -15,10 +15,4 @@ struct Login: Codable {
     let image: String
     let accessToken: String
     let refreshToken: String
-}
-
-struct LoginRequestBody: Codable {
-    let username: String
-    let password: String
-    let expiresInMins: Int
 }
